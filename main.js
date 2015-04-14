@@ -12,7 +12,9 @@ var app = http.createServer(function (req, res) {
 
 function memoryLoad()
 {
-	// console.log( os.totalmem(), os.freemem() );
+	console.log( os.totalmem(), os.freemem() );
+	var freememperc = (os.freemem()/os.totalmem())*100;
+	console.log('Percentage of memory free :', freememperc);
 	return 0;
 }
 
@@ -52,6 +54,10 @@ function cpuAverage()
 	var totalDifference = endMeasure.total - startMeasure.total;
  
 	//Calculate the average percentage CPU usage
+	var usageDifference = totalDifference-idleDifference;
+	var avgperc = (usageDifference/totalDifference)*100;
+
+	console.log('The average usage percentage:',avgperc);
 	return 0;
 }
 
